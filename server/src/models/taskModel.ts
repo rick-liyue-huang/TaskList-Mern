@@ -1,15 +1,22 @@
 
 import mongoose from "mongoose";
 
+
 const {Schema} = mongoose;
 
 /**
  * @desc create TaskSchema
  */
 const TaskSchema = new Schema({
+	user: {
+		type: mongoose.Schema.Types.ObjectId,
+		required: true,
+	//	add reference
+		ref: 'UserModel'
+	},
 	text: {
 		type: String,
-		required: true
+		required: [true, 'please add a text']
 	}
 }, {
 	// add createdAt and updatedAt
@@ -19,4 +26,4 @@ const TaskSchema = new Schema({
 /**
  * @desc create TaskModel
  */
-export default mongoose.model('Task', TaskSchema);
+export const TaskModel = mongoose.model('Task', TaskSchema);

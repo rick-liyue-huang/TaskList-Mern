@@ -1,7 +1,7 @@
 import {Request, Response} from "express";
 // use asyncHandler to replace the try..catch..
 import asyncHandler from 'express-async-handler';
-import TaskModel from '../models/taskModel'
+import {TaskModel} from '../models/taskModel'
 
 /**
  * @desc get task

@@ -1,10 +1,11 @@
 
 import express, {Request, Response} from 'express';
 import dotenv from 'dotenv';
-import taskRouter from './routes/taskRoute';
+import {taskRouter} from './routes/taskRouter';
 import {errorHandler} from './middlewares/errorHandler';
-import {connectDB} from "./config/db";
+// import {connectDB} from "./config/db";
 import mongoose from "mongoose";
+import {userRouter} from "./routes/userRouter";
 
 // app will recognize the process.env.xxx variables
 dotenv.config();
@@ -25,6 +26,7 @@ mongoose
 		app.use(express.urlencoded({extended: false}))
 
 		app.use('/api/tasks', taskRouter);
+		app.use('/api/users', userRouter);
 
 		app.use(errorHandler);
 

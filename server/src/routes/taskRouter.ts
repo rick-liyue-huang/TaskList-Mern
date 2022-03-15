@@ -2,14 +2,14 @@
 import express, {Request, Response} from "express";
 import {getTask, createTask, updateTask, deleteTask } from '../controllers/taskController';
 
-const router = express.Router();
+const taskRouter = express.Router();
 
-router
+taskRouter
 	.route('/')
 	.get(getTask)
 	.post(createTask);
 
-router
+taskRouter
 	.route('/:id')
 	.put(updateTask)
 	.delete(deleteTask);
@@ -21,4 +21,4 @@ router.put('/:id', updateTask);
 router.delete('/:id', deleteTask);
 */
 
-export default router;
+export {taskRouter};
