@@ -34,7 +34,9 @@ export const registerUserController = asyncHandler(async (req: Request, res: Res
 
 //	create user
 	const newUser = await UserModel.create({
-		name, email, password: hashedPassword
+		name,
+		email,
+		password: hashedPassword
 	});
 
 	if (newUser) {
@@ -42,6 +44,8 @@ export const registerUserController = asyncHandler(async (req: Request, res: Res
 			_id: newUser._id,
 			name: newUser.name,
 			email: newUser.email,
+			// after register, create the token for the specified user
+			token: generateToken(newUser._id)
 		})
 	} else {
 		res.status(400);
@@ -58,16 +62,52 @@ export const registerUserController = asyncHandler(async (req: Request, res: Res
  */
 export const loginUserController = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
 
-})
+	const {email, password} = req.body;
+
+	// check user
+	const user = await UserModel.findOne({email});
+	if (user && (await bcrypt.compare(password,user.password))) {
+		res.status(201).json({
+			_id: user._id,
+			name: user.name,
+			email: user.email,
+			// after login, create the token for the specified user
+			token: generateToken(user._id)
+		});
+	} else {
+		res.status(400);
+		throw new Error('user no registered')
+	}
+});
 
 
 /**
  * @desc Get User
  * @route GET /api/users/me
- * @access public
+ * @access private
  *
  */
 export const getMeController = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
 
-})
+	const {_id, name, email} = await UserModel.findById(req.user._id);
+
+	res.status(200).json({
+		id: _id,
+		name,
+		email
+	});
+});
+
+/**
+ * @desc generate the token for authentication and authorization
+ * @access private
+ * @param id
+ */
+export const generateToken = (id: string) => {
+	return JWT.sign(
+		{id},
+		process.env.JWT_SECRET_KEY as string,
+		{expiresIn: '1d'}
+	)
+}
 
