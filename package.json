@@ -1,0 +1,21 @@
+{
+  "name": "tasklist-mern",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "npm run dev --prefix server",
+    "client": "npm start --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rick-liyue-huang/TaskList-Mern.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rick-liyue-huang/TaskList-Mern/issues"
+  },
+  "homepage": "https://github.com/rick-liyue-huang/TaskList-Mern#readme"
+}
