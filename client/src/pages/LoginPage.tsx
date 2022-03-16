@@ -1,5 +1,11 @@
-import React, {ChangeEvent, FormEvent, useState} from 'react';
+import React, {ChangeEvent, FormEvent, useEffect, useState} from 'react';
 import {FaSignInAlt} from "react-icons/fa";
+import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../app/store";
+import {toast} from "react-toastify";
+import {login, register, reset} from "../features/auth/authSlice";
+import Spinner from "../components/Spinner";
 
 interface LoginType {
 	email: string;
@@ -15,6 +21,11 @@ const LoginPage: React.FC = () => {
 
 	const {email, password} = formData;
 
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+
+	const {user, isError, isLoading, isSuccess, message} = useSelector((state: RootState) => state.auth);
+
 	const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setFormData((prevState) => ({
 			...prevState,
@@ -22,6 +33,31 @@ const LoginPage: React.FC = () => {
 		}))
 	}
 
+	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+
+		const userData = {
+			email, password
+		}
+
+		dispatch(login(userData))
+
+	}
+
+	useEffect(() => {
+		if (isError) {
+			toast.error(message as string)
+		}
+		if (isSuccess && user) {
+			navigate('/')
+		}
+		dispatch(reset());
+
+	}, [user, isError, isSuccess, message, navigate, dispatch])
+
+	if (isLoading) {
+		return <Spinner />
+	}
 
 	return (
 		<>
@@ -32,7 +68,7 @@ const LoginPage: React.FC = () => {
 				<p>Login an Account</p>
 			</section>
 			<section className="form">
-				<form onSubmit={(e: FormEvent<HTMLFormElement>) => e.preventDefault()}>
+				<form onSubmit={handleSubmit}>
 					<div className="form-group">
 						<input
 							type="email" className="form-control" id={'email'} name={'email'}

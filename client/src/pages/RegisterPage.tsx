@@ -9,7 +9,7 @@ import {RootState} from "../app/store";
 import Spinner from '../components/Spinner';
 
 export interface RegisterType {
-	name: string;
+	name?: string;
 	email: string;
 	password: string;
 	cpassword?: string;
