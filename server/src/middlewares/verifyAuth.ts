@@ -10,7 +10,7 @@ export const verifyAuth = asyncHandler(async (req: Request, res: Response, next:
 
 	let token;
 
-	if (req.headers['authorization'] && req.headers.authorization.startsWith('Bearer ')) {
+	if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
 		try {
 		//	 get token from header
 			token = req.headers.authorization.split(' ')[1];
@@ -18,11 +18,17 @@ export const verifyAuth = asyncHandler(async (req: Request, res: Response, next:
 		//verify the token
 			const decoded = JWT.verify(token, process.env.JWT_SECRET_KEY as string) as JwtPayload;
 
+			console.log('decoded: ', decoded);
+
 		//	get the user from token
 		//	here needs to modify the express type file by @types/express/index.d.ts and set typeRoots in tsconfig.json
-			req.user = await UserModel.findOne(decoded._id).select('-password');
+		//	here decoded.id must be 'id' to see the jwt.io
+			req.user = await UserModel.findById(decoded.id).select('-password');
+
+			console.log('req.user: ', req.user);
 
 			next();
+
 		} catch (err) {
 			console.log(err);
 			res.status(401);

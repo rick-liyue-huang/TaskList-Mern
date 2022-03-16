@@ -22,7 +22,7 @@ const getTask = asyncHandler(async (req: Request, res: Response) => {
 
 	// task is created by user so will find task by user
 	// match with TaskSchema user type
-	const tasks = await TaskModel.find({user: req.user._id});
+	const tasks = await TaskModel.find({user: req.user.id});
 
 	res.status(200).json(tasks)
 })
@@ -37,7 +37,7 @@ const createTask = asyncHandler(async (req: Request, res: Response) => {
 	const task = await TaskModel.create({
 		text: req.body.text,
 		// the user create task
-		user: req.user._id
+		user: req.user.id
 	})
 	res.status(200).json(task)
 });
@@ -56,9 +56,7 @@ const updateTask = asyncHandler(async (req: Request, res: Response) => {
 		throw new Error('Task not found')
 	}
 
-	const user = await UserModel.findById(req.user._id);
-
-
+	const user = await UserModel.findById(req.user.id);
 
 	// check for user
 	if (!user) {
@@ -92,7 +90,7 @@ const deleteTask = asyncHandler(async (req: Request, res: Response) => {
 	}
 
 
-	const user = await UserModel.findById(req.user._id);
+	const user = await UserModel.findById(req.user.id);
 
 	console.log('user: ', user);
 

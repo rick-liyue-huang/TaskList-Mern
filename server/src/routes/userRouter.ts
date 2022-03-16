@@ -1,5 +1,4 @@
 
-import mongoose from "mongoose";
 import express from "express";
 import {getMeController, loginUserController, registerUserController} from '../controllers/userController'
 import {verifyAuth} from "../middlewares/verifyAuth";
