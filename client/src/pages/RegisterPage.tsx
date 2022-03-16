@@ -1,12 +1,18 @@
 import React, {ChangeEvent, FormEvent} from 'react';
 import {useState, useEffect} from "react";
 import {FaUser} from "react-icons/fa";
+import {useSelector, useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import { toast } from 'react-toastify';
+import {register, reset} from "../features/auth/authSlice";
+import {RootState} from "../app/store";
+import Spinner from '../components/Spinner';
 
-interface RegisterType {
+export interface RegisterType {
 	name: string;
 	email: string;
 	password: string;
-	cpassword: string;
+	cpassword?: string;
 }
 
 const RegisterPage: React.FC = () => {
@@ -18,6 +24,12 @@ const RegisterPage: React.FC = () => {
 		cpassword: ''
 	});
 
+
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+
+	const {user, isError, isLoading, isSuccess, message} = useSelector((state: RootState) => state.auth);
+
 	const {name, email, password, cpassword} = formData;
 
 	const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -25,8 +37,38 @@ const RegisterPage: React.FC = () => {
 			...prevState,
 			[e.target.name]: e.target.value
 		}))
+	};
+
+	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+
+		// for the confirmed password, we can verify on frontend
+		if (password !== cpassword) {
+			toast.error('password and confirm password not match')
+		} else {
+			const userData = {
+				name, email, password
+			};
+
+			// send action to server
+			dispatch(register(userData))
+		}
 	}
 
+	useEffect(() => {
+		if (isError) {
+			toast.error(message as string)
+		}
+		if (isSuccess && user) {
+			navigate('/')
+		}
+		dispatch(reset());
+
+	}, [user, isError, isSuccess, message, navigate, dispatch])
+
+	if (isLoading) {
+		return <Spinner />
+	}
 
 	return (
 		<>
@@ -37,7 +79,7 @@ const RegisterPage: React.FC = () => {
 				<p>Create an Account</p>
 			</section>
 			<section className="form">
-				<form onSubmit={(e: FormEvent<HTMLFormElement>) => e.preventDefault()}>
+				<form onSubmit={handleSubmit}>
 					<div className="form-group">
 						<input
 							type="text" className="form-control" id={'name'} name={'name'}

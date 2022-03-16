@@ -6,6 +6,7 @@ import {errorHandler} from './middlewares/errorHandler';
 // import {connectDB} from "./config/db";
 import mongoose from "mongoose";
 import {userRouter} from "./routes/userRouter";
+import cors from 'cors'
 
 // app will recognize the process.env.xxx variables
 dotenv.config();
@@ -21,6 +22,7 @@ mongoose
 		const app = express();
 		const PORT = process.env.PORT || 3500;
 
+		app.use(cors()); // if add 'proxy' on client package.json, will not need cors
 		app.use(express.json());
 		// support the x-www-form-urlencoded
 		app.use(express.urlencoded({extended: false}))
