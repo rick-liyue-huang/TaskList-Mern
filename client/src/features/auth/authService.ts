@@ -28,8 +28,8 @@ const login = async (userData: Record<string, any>) => {
 }
 
 // logout user
-const logout = async () => {
-	await localStorage.removeItem('user');
+const logout = () => {
+	localStorage.removeItem('user');
 }
 
 const authService = {

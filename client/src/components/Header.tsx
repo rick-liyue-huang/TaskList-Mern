@@ -4,6 +4,7 @@ import {Link, useNavigate} from 'react-router-dom';
 import {logout, reset} from "../features/auth/authSlice";
 import {useSelector, useDispatch} from "react-redux";
 import {RootState} from "../app/store";
+import LoginPage from "../pages/LoginPage";
 
 const Header = () => {
 
@@ -11,41 +12,39 @@ const Header = () => {
 	const dispatch = useDispatch();
 	const {user} = useSelector((state: RootState) => state.auth);
 
+	console.log('user: ', user);
+
 	const handleLogout = () => {
 		dispatch(logout());
 		dispatch(reset());
-
+		navigate('/');
 	}
 	return (
-		<header className={'header'}>
-			<div className="logo">
-				<Link to={'/'}>Task Dashboard</Link>
+		<header className='header'>
+			<div className='logo'>
+				<Link to='/'>TASK MANAGEMENT</Link>
 			</div>
 			<ul>
-				{
-					user ? (
-						<ul>
-							<li>
-								<Link onClick={handleLogout} to={'/'}>
-									<FaUser /> LOGOUT
-								</Link>
-							</li>
-						</ul>
-					) : (
-						<ul>
-							<li>
-								<Link to={'/login'}>
-									<FaSignInAlt /> LOGIN
-								</Link>
-							</li>
-							<li>
-								<Link to={'/register'}>
-									<FaUser /> REGISTER
-								</Link>
-							</li>
-						</ul>
-					)
-				}
+				{user ? (
+					<li>
+						<button className='btn' onClick={handleLogout}>
+							<FaSignOutAlt /> LOGOUT
+						</button>
+					</li>
+				) : (
+					<>
+						<li>
+							<Link to='/login'>
+								<FaSignInAlt /> LOGIN
+							</Link>
+						</li>
+						<li>
+							<Link to='/register'>
+								<FaUser /> REGISTER
+							</Link>
+						</li>
+					</>
+				)}
 			</ul>
 		</header>
 	);

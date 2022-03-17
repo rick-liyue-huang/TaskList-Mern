@@ -4,7 +4,7 @@ import authService from "./authService";
 import {RegisterType} from "../../pages/RegisterPage";
 
 // get user from localstorage
-const user = JSON.parse(localStorage.getItem('user') || '{}');
+const user = JSON.parse(localStorage.getItem('user') || 'null');
 
 interface AuthType {
 	user: Record<string, any> | null;
@@ -77,9 +77,6 @@ export const authSlice = createSlice({
 				state.message = action.payload; // match thunkApi.rejectWithValue(message)
 				state.user = null;
 			})
-			.addCase(logout.fulfilled, (state) => {
-				state.user = null;
-			})
 			.addCase(login.pending, (state) => {
 				state.isLoading = true;
 			})
@@ -92,6 +89,9 @@ export const authSlice = createSlice({
 				state.isLoading = false;
 				state.isError = true;
 				state.message = action.payload; // match thunkApi.rejectWithValue(message)
+				state.user = null;
+			})
+			.addCase(logout.fulfilled, (state) => {
 				state.user = null;
 			})
 	}
