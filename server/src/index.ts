@@ -35,7 +35,7 @@ mongoose
 		if (process.env.NODE_ENV === 'production') {
 			app.use(express.static(path.join(__dirname, '..', '..', 'client/build')));
 
-			app.get('*', (req: Request, res: Response) => res.sendFile(path.join(__dirname, '..', '..', 'client', 'build', 'index.html')));
+			app.get('*', (req: Request, res: Response) => res.sendFile(path.resolve(__dirname, '../', '../', 'client', 'build', 'index.html')));
 
 		} else {
 			app.get('/', (req: Request, res: Response) => res.send('Please set NODE_ENV=production'))
