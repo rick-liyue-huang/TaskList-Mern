@@ -70,6 +70,7 @@ const updateTask = asyncHandler(async (req: Request, res: Response) => {
 		throw new Error('not matched user on this task')
 	}
 
+	// TODO try req.body => req.body.text
 	const updatedTask = await TaskModel.findByIdAndUpdate(req.params.id, req.body, {new: true});
 
 	res.status(200).json(updatedTask)

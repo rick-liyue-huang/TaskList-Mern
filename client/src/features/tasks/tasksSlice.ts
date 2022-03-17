@@ -67,21 +67,23 @@ export const deleteTask = createAsyncThunk(
 		}
 	}
 );
-//
-// export const editTask = createAsyncThunk(
-// 	'tasks/edit',
-// 	async (taskData: Record<string, any>, id: string, thunkApi: Record<string, any>) => {
-// 		try {
-// 			const token = thunkApi.getState().auth.user.token;
-// 			return await taskService.editTask(id, taskData, token);
-//
-// 		} catch (err) {
-// 			const message = (err.response && err.response.data && err.response.data.message) || err.message || err.toString();
-//
-// 			return thunkApi.rejectWithValue(message)
-// 		}
-// 	}
-// )
+/*
+
+export const editTask = createAsyncThunk(
+	'tasks/edit',
+	async (formData: Record<string, any>, thunkApi: Record<string, any>) => {
+		try {
+			const token = thunkApi.getState().auth.user.token;
+			return await taskService.editTask(formData.id, formData.text, token);
+
+		} catch (err) {
+			const message = (err.response && err.response.data && err.response.data.message) || err.message || err.toString();
+
+			return thunkApi.rejectWithValue(message)
+		}
+	}
+)
+*/
 
 export const tasksSlice = createSlice({
 	name: 'task',
@@ -129,20 +131,7 @@ export const tasksSlice = createSlice({
 				state.isLoading = false;
 				state.isError = true;
 				state.message = action.payload;
-			})
-			// .addCase(editTask.pending, (state) => {
-			// 	state.isLoading = true;
-			// })
-			// .addCase(editTask.fulfilled, (state, action) => {
-			// 	state.isLoading = false;
-			// 	state.isSuccess = true;
-			// 	state.tasks = [...state.tasks, ]
-			// })
-			// .addCase(editTask.rejected, (state, action) => {
-			// 	state.isLoading = false;
-			// 	state.isError = true;
-			// 	state.message = action.payload;
-			// })
+			});
 	}
 })
 

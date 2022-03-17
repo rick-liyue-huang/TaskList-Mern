@@ -47,7 +47,8 @@ const deleteTask = async (taskId: string, token: string) => {
 	return response.data;
 }
 
-const editTask = async (taskId: string, taskData: Record<string, any>, token: string) => {
+/*
+const editTask = async (taskId: string, taskData: string, token: string) => {
 	const config = {
 		headers: {
 			Authorization: `Bearer ${token}`
@@ -56,15 +57,17 @@ const editTask = async (taskId: string, taskData: Record<string, any>, token: st
 
 	const response = await axios.put(API_URL + taskId, taskData, config);
 
+	console.log('response: ', response);
 	return response.data;
 }
+*/
 
 
 const taskService = {
 	createTask,
 	getAllTasks,
 	deleteTask,
-	editTask
+	// editTask
 }
 
 export default taskService;
