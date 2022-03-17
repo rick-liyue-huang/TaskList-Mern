@@ -1,11 +1,11 @@
 
 import express, {Request, Response} from 'express';
 import dotenv from 'dotenv';
-import {taskRouter} from './routes/taskRouter';
-import {errorHandler} from './middlewares/errorHandler';
+import {taskRouter} from './src/routes/taskRouter';
+import {errorHandler} from './src/middlewares/errorHandler';
 // import {connectDB} from "./config/db";
 import mongoose from "mongoose";
-import {userRouter} from "./routes/userRouter";
+import {userRouter} from "./src/routes/userRouter";
 import cors from 'cors'
 import path from 'path';
 
@@ -33,9 +33,13 @@ mongoose
 
 		// serve client
 		if (process.env.NODE_ENV === 'production') {
-			app.use(express.static(path.join(__dirname, '..', '..', 'client/build')));
+			app.use(express.static(path.join(__dirname, '../client/build')))
 
-			app.get('*', (req: Request, res: Response) => res.sendFile(path.resolve(__dirname, '../', '../', 'client', 'build', 'index.html')));
+			app.get('*', (req: Request, res: Response) =>
+				res.sendFile(
+					path.resolve(__dirname, '../', 'client', 'build', 'index.html')
+				)
+			)
 
 		} else {
 			app.get('/', (req: Request, res: Response) => res.send('Please set NODE_ENV=production'))
