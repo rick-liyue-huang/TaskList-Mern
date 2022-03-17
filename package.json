@@ -2,7 +2,7 @@
   "name": "tasklist-mern",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "start": "ts-node server/index.ts",
     "server": "npm run dev --prefix server",
