@@ -1,9 +1,12 @@
-import React, {ChangeEvent, FormEvent, useState} from 'react';
+import React, {ChangeEvent, FormEvent, useEffect, useState} from 'react';
 import {toast} from "react-toastify";
 import {FaSignInAlt} from "react-icons/fa";
 import {useSelector, useDispatch} from "react-redux";
-import {login, UserType} from "../features/auth/authSlice";
+import {login, UserType, reset} from "../features/auth/authSlice";
 import {RootState} from "../app/store";
+import {useNavigate} from "react-router-dom";
+import SpinnerComponent from "../components/Spinner";
+
 
 
 const LoginPage = () => {
@@ -14,8 +17,22 @@ const LoginPage = () => {
 
 	const {user, isSuccess, isLoading, message, isError} = useSelector((state: RootState) => state.auth);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const {email, password} = formData;
+
+	useEffect(() => {
+		if (isError) {
+			toast.error(message);
+		}
+
+		if (isSuccess || user) {
+			navigate('/')
+		}
+
+		dispatch(reset())
+	}, [isError, isSuccess, user, message, navigate, dispatch]);
+
 
 	// through name='xxx' to different the input
 	const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -33,6 +50,8 @@ const LoginPage = () => {
 
 		dispatch(login(userData))
 	}
+
+	if (isLoading) return <SpinnerComponent />
 
 	return (
 		<>

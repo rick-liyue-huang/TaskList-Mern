@@ -1,24 +1,52 @@
 import React from 'react';
-import {FaSignInAlt, FaUser} from "react-icons/fa";
-import {Link} from 'react-router-dom';
+import {FaSignInAlt, FaSignOutAlt, FaUser} from "react-icons/fa";
+import {Link, useNavigate} from 'react-router-dom';
+import {useSelector, useDispatch} from "react-redux";
+import {logout, reset} from "../features/auth/authSlice";
+import {RootState} from "../app/store";
 
 const HeaderComponent = () => {
+
+	const {user} = useSelector((state: RootState) => state.auth)
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+
+	const handleLogout = () => {
+		dispatch(logout());
+		dispatch(reset());
+		navigate('/')
+	}
+
 	return (
 		<header className={'header'}>
 			<div className="logo">
 				<Link to={'/'}>HOME</Link>
 			</div>
 			<ul>
-				<li>
-					<Link to={'/login'}>
-						<FaSignInAlt /> LOGIN
-					</Link>
-				</li>
-				<li>
-					<Link to={'/register'}>
-						<FaUser /> REGISTER
-					</Link>
-				</li>
+				{
+					user ? (
+						<li>
+							<button className={'btn'} onClick={handleLogout}>
+								<FaSignOutAlt /> LOGOUT
+							</button>
+						</li>
+					) : (
+						<>
+							<li>
+								<Link to={'/login'}>
+									<FaSignInAlt /> LOGIN
+								</Link>
+							</li>
+							<li>
+								<Link to={'/register'}>
+									<FaUser /> REGISTER
+								</Link>
+							</li>
+						</>
+
+					)
+				}
+
 			</ul>
 		</header>
 	);

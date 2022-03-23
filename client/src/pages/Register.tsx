@@ -5,6 +5,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {register, UserType, reset} from "../features/auth/authSlice";
 import {RootState} from "../app/store";
 import {useNavigate} from "react-router-dom";
+import SpinnerComponent from '../components/Spinner'
 
 const RegisterPage = () => {
 
@@ -54,6 +55,8 @@ const RegisterPage = () => {
 			dispatch(register(userData))
 		}
 	}
+
+	if (isLoading) return <SpinnerComponent />
 
 	return (
 		<>

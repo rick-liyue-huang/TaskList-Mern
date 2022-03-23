@@ -63,7 +63,28 @@ export const login = createAsyncThunk(
 	'auth/login',
 	async (user: UserType, thunkApi) => {
 	console.log(user);
+		try {
+			return await authService.login(user)
+		} catch (err) {
+			const message =
+				(err.response && err.response.data && err.response.data.message)
+				|| err.message ||
+				err.toString() as string;
+
+			return thunkApi.rejectWithValue(message);
+		}
+
 });
+
+/**
+ * @desc logout user
+ */
+export const logout = createAsyncThunk(
+	'auth/logout',
+	async () => {
+		await authService.logout()
+	}
+)
 
 
 /**
@@ -95,6 +116,23 @@ export const authSlice = createSlice({
 				state.isError = true;
 				state.user = null;
 				state.message = action.payload as string;
+			})
+			.addCase(login.pending, (state) => {
+				state.isLoading = true;
+			})
+			.addCase(login.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.isSuccess = true;
+				state.user = action.payload;
+			})
+			.addCase(login.rejected, (state, action) => {
+				state.isLoading = false;
+				state.isError = true;
+				state.user = null;
+				state.message = action.payload as string;
+			})
+			.addCase(logout.fulfilled, (state) => {
+				state.user = null;
 			})
 	}
 });
