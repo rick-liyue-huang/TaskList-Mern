@@ -2,6 +2,7 @@
 const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcryptjs');
 const {userModel} = require("../models/userModel");
+const JWT = require('jsonwebtoken');
 
 
 
@@ -40,7 +41,8 @@ const registerUserController = asyncHandler(async (req, res) => {
 		res.status(201).json({
 			_id: newUser._id,
 			name: newUser.name,
-			email: newUser.email
+			email: newUser.email,
+			token: generateToken(newUser._id)
 		});
 	}
 	else {
@@ -67,13 +69,40 @@ const loginUserController = asyncHandler(async (req, res) => {
 		res.status(201).json({
 			_id: user._id,
 			name: user.name,
-			email: user.email
+			email: user.email,
+			token: generateToken(user._id)
 		});
 	}
 	else {
 		res.status(401);
 		throw new Error('Invalid email or password')
 	}
-})
+});
 
-module.exports = {registerUserController, loginUserController}
+/**
+ * @desc get user after register or login
+ * @type {*|express.RequestHandler<core.ParamsDictionary, any, any, core.Query>}
+ */
+const getMeController = asyncHandler(async (req, res) => {
+	const me = {
+		id: req.user._id,
+		email: req.user.email,
+		name: req.user.name
+	}
+
+	res.status(200).json(me);
+});
+
+
+// generate token through JWT
+function generateToken(id) {
+	return JWT.sign(
+		{id},
+		process.env.JWT_SECRET_KEY,
+		{expiresIn: '1d'}
+	)
+}
+
+
+
+module.exports = {registerUserController, loginUserController, getMeController}
