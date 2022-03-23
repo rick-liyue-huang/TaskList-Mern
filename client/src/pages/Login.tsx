@@ -2,18 +2,17 @@ import React, {ChangeEvent, FormEvent, useState} from 'react';
 import {toast} from "react-toastify";
 import {FaSignInAlt} from "react-icons/fa";
 import {useSelector, useDispatch} from "react-redux";
-import {login} from "../features/auth/authSlice";
+import {login, UserType} from "../features/auth/authSlice";
 import {RootState} from "../app/store";
-import {log} from "util";
 
 
 const LoginPage = () => {
-	const [formData, setFormData] = useState({
+	const [formData, setFormData] = useState<UserType>({
 		email: '',
 		password: '',
 	});
 
-	const {} = useSelector((state: RootState) => state.auth);
+	const {user, isSuccess, isLoading, message, isError} = useSelector((state: RootState) => state.auth);
 	const dispatch = useDispatch();
 
 	const {email, password} = formData;

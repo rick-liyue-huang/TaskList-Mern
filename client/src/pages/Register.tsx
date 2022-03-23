@@ -1,16 +1,14 @@
-import React, {ChangeEvent, FormEvent, useState} from 'react';
+import React, {ChangeEvent, FormEvent, useEffect, useState} from 'react';
 import {FaUser} from "react-icons/fa";
 import {toast} from "react-toastify";
 import {useSelector, useDispatch} from "react-redux";
-import {register} from "../features/auth/authSlice";
+import {register, UserType, reset} from "../features/auth/authSlice";
 import {RootState} from "../app/store";
+import {useNavigate} from "react-router-dom";
 
 const RegisterPage = () => {
 
-	const dispatch = useDispatch();
-	const {user, isSuccess, isLoading, message, isError} = useSelector((state: RootState) => state.auth)
-
-	const [formData, setFormData] = useState({
+	const [formData, setFormData] = useState<UserType>({
 		name: '',
 		email: '',
 		password: '',
@@ -18,6 +16,22 @@ const RegisterPage = () => {
 	});
 
 	const {name, email, password, cpassword} = formData;
+
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const {user, isSuccess, isLoading, message, isError} = useSelector((state: RootState) => state.auth);
+
+	useEffect(() => {
+		if (isError) {
+			toast.error(message);
+		}
+
+		if (isSuccess || user) {
+			navigate('/')
+		}
+
+		dispatch(reset())
+	}, [isError, isSuccess, user, message, navigate, dispatch])
 
 	// through name='xxx' to different the input
 	const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -45,7 +59,7 @@ const RegisterPage = () => {
 		<>
 			<section className="heading">
 				<h1>
-					<FaUser /> REGISTER {user}
+					<FaUser /> REGISTER
 				</h1>
 				<p>Please register one Account</p>
 			</section>
