@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const {userRouter} = require("./routes/userRoute");
 const {errorHandler} = require("./middlewares/errorHandler");
 const {connectDB} = require("./config/connectDB");
+const {taskRouter} = require("./routes/taskRoute");
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}))
 
 app.use('/api/users', userRouter);
+app.use('/api/tasks', taskRouter)
 
 // errorHandler deal with the res.json, so put it after routes
 app.use(errorHandler);
