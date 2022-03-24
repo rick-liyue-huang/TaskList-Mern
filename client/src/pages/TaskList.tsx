@@ -36,7 +36,7 @@ const TaskListPage = () => {
 		<div>
 			<HomeButton url={'/'} />
 			<h1>TASK LIST</h1>
-			<div className="ticket-headings">
+			<div className="task-headings">
 				<div>Date</div>
 				<div>Title</div>
 				<div>Status</div>

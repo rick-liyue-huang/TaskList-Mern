@@ -20,7 +20,7 @@ const HeaderComponent = () => {
 	return (
 		<header className={'header'}>
 			<div className="logo">
-				<Link to={'/'}>HOME</Link>
+				<Link to={'/'} style={{fontWeight: 'bolder', fontSize: '1.6rem'}}>HOME</Link>
 			</div>
 			<ul>
 				{

@@ -76,12 +76,12 @@ const getTaskByIdController = asyncHandler(async (req, res) => {
 
 	if (!singleTask) {
 		res.status(404);
-		throw new Error('Tick not found')
+		throw new Error('Task not found')
 	}
 
 	if (singleTask.user.toString() !== req.user.id) {
 		res.status(401)
-		throw new Error('no authorized')
+		throw new Error('No authorized')
 	}
 
 	res.status(200).json(singleTask)
@@ -106,12 +106,12 @@ const deleteTaskByIdController = asyncHandler(async (req, res) => {
 
 	if (!singleTask) {
 		res.status(404);
-		throw new Error('Tick not found')
+		throw new Error('Task not found')
 	}
 
 	if (singleTask.user.toString() !== req.user.id) {
 		res.status(401)
-		throw new Error('no authorized')
+		throw new Error('No authorized')
 	}
 
 	// delete the task in database
@@ -139,12 +139,12 @@ const updateTaskByIdController = asyncHandler(async (req, res) => {
 
 	if (!singleTask) {
 		res.status(404);
-		throw new Error('Tick not found')
+		throw new Error('Task not found')
 	}
 
 	if (singleTask.user.toString() !== req.user.id) {
 		res.status(401)
-		throw new Error('no authorized')
+		throw new Error('No authorized')
 	}
 
 	const updatedTask = await taskModel.findByIdAndUpdate(req.params.id, req.body, {

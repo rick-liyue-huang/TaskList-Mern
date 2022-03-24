@@ -13,7 +13,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #000;
+  color: steelblue;
 }
 
 p {
@@ -138,15 +138,15 @@ h3 {
 
 .btn {
   padding: 10px 20px;
-  border: 1px solid #000;
+  border: 1px solid steelblue;
   border-radius: 5px;
-  background: #000;
+  background: steelblue;
   color: #fff;
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
   text-align: center;
-  appearance: button;
+  appearance: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -158,7 +158,7 @@ h3 {
 
 .btn-reverse {
   background: #fff;
-  color: #000;
+  color: steelblue;
 }
 
 .btn-block {
@@ -185,31 +185,31 @@ h3 {
   transform: scale(0.98);
 }
 
-.ticket-created {
+.task-created {
   border: 1px solid #e6e6e6;
   border-radius: 5px;
   padding: 50px;
 }
 
-.ticket-number {
+.task-number {
   margin-bottom: 30px;
 }
 
-.ticket-number h2 {
+.task-number h2 {
   font-size: 2.3rem;
   margin-bottom: 10px;
 }
 
-.ticket-number p {
+.task-number p {
   font-size: 1.3rem;
 }
 
-.ticket-info {
+.task-info {
   font-size: 1.3rem;
 }
 
-.ticket,
-.ticket-headings {
+.task,
+.task-headings {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
@@ -222,12 +222,12 @@ h3 {
   text-align: center;
 }
 
-.ticket-headings {
+.task-headings {
   font-weight: 700;
 }
 
 .status {
-  background-color: #333;
+  background-color: rebeccapurple;
   color: #fff;
   width: 100px;
   padding: 0 20px;
@@ -255,27 +255,27 @@ h3 {
   border-radius: 10px;
 }
 
-.ticket-page {
+.task-page {
   position: relative;
   text-align: left;
 }
 
-.ticket-page h2 {
+.task-page h2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.ticket-page .btn {
+.task-page .btn {
   margin-bottom: 30px;
 }
 
-.ticket-page .btn-block {
+.task-page .btn-block {
   width: 100%;
   margin-top: 30px;
 }
 
-.ticket-desc {
+.task-desc {
   margin: 20px 0;
   font-size: 17px;
   background-color: #f4f4f4;
@@ -320,7 +320,7 @@ h3 {
 .btn-close {
   background: none;
   border: none;
-  color: #000;
+  color: steelblue;
   position: absolute;
   top: 5px;
   right: 5px;
@@ -372,7 +372,7 @@ footer {
   width: 64px;
   height: 64px;
   border: 8px solid;
-  border-color: #000 transparent #555 transparent;
+  border-color: steelblue transparent #555 transparent;
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
 }
@@ -395,7 +395,7 @@ footer {
     width: 90%;
   }
 
-  .ticket-created h2,
+  .task-created h2,
   .heading h1 {
     font-size: 2rem;
   }

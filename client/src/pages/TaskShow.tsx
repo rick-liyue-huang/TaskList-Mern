@@ -63,7 +63,7 @@ const TaskShowPage = () => {
 
 	const handleComplete = () => {
 		dispatch(completeSingleTask(taskId!))
-		toast.success('Task completed');
+		toast.success('Task done');
 		navigate('/')
 	}
 
@@ -83,8 +83,8 @@ const TaskShowPage = () => {
 	}
 
 	return (
-		<div className={'ticket-page'}>
-			<header className="ticket-header">
+		<div className={'task-page'}>
+			<header className="task-header">
 				<HomeButton url={'/tasks'} />
 				<h2>
 					Task ID: {task && task._id}
@@ -94,7 +94,7 @@ const TaskShowPage = () => {
 				</h2>
 				<h3>Submission Date: {new Date(task.createdAt as string).toLocaleDateString('en-AU')}</h3>
 				<h3>Title: {task.title}</h3>
-				<div className="ticket-desc">
+				<div className="task-desc">
 					<h3>Description</h3>
 					<p>{task.description}</p>
 				</div>
@@ -102,7 +102,7 @@ const TaskShowPage = () => {
 			</header>
 
 			{
-				task.status !== 'completed' && (
+				task.status !== 'done' && (
 					<button onClick={handleOpenModal} className={'btn'}><FaPlus /> Add Note</button>
 				)
 			}
@@ -135,7 +135,7 @@ const TaskShowPage = () => {
 			}
 
 			{
-				task.status !== 'completed' && (
+				task.status !== 'done' && (
 					<button
 						className={'btn btn-block btn-danger'}
 						onClick={handleComplete}

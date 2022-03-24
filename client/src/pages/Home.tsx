@@ -6,14 +6,14 @@ const HomePage = () => {
 	return (
 		<>
 			<section className={'heading'}>
-				<h1>Get the task list</h1>
+				<h1 style={{color: 'steelblue'}}>TASK DASHBOARD</h1>
 				<p>Please choose below</p>
 			</section>
 			<Link to={'/newtask'} className={'btn btn-reverse btn-block'}>
-				<FaQuestionCircle /> Create New Task
+				<FaQuestionCircle /> <span style={{color: 'steelblue'}}>CREATE TASK</span>
 			</Link>
 			<Link to={'/tasks'} className={'btn btn-block'}>
-				<FaTicketAlt /> View Task List
+				<FaTicketAlt />  SHOW TASK
 			</Link>
 		</>
 	);

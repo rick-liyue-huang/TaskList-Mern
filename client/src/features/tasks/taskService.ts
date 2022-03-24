@@ -67,7 +67,7 @@ const completeSingleTask = async (id: string, token: string) => {
 		}
 	};
 
-	const response = await axios.put(API_URI + id, {status: 'completed'}, config);
+	const response = await axios.put(API_URI + id, {status: 'done'}, config);
 
 	return response.data;
 }

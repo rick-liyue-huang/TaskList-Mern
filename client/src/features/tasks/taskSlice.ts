@@ -177,7 +177,7 @@ export const taskSlice = createSlice({
 			})
 			.addCase(completeSingleTask.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.tasks.map(task => task._id === action.payload._id ? (task.status = 'completed') : task);
+				state.tasks.map(task => task._id === action.payload._id ? (task.status = 'done') : task);
 			})
 	})
 });

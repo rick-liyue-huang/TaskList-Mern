@@ -5,7 +5,7 @@ import {ResponseTaskType} from "../features/tasks/taskSlice";
 
 const TaskItem = ({task}: {task: ResponseTaskType}) => {
 	return (
-		<div className={'ticket'}>
+		<div className={'task'}>
 			<div>
 				{
 					new Date(task.createdAt as string).toLocaleString('en-AU')
