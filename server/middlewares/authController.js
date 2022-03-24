@@ -4,6 +4,10 @@ const asyncHandler = require('express-async-handler');
 
 const {userModel} = require('../models/userModel');
 
+/**
+ * @desc confirm the user can execute the task controller after get token
+ * @type {*|express.RequestHandler<core.ParamsDictionary, any, any, core.Query>}
+ */
 const authController = asyncHandler(async (req, res, next) => {
 	let token;
 

@@ -2,7 +2,11 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {ResponseTaskType} from "../features/tasks/taskSlice";
 
-
+/**
+ * @desc dump component
+ * @param task
+ * @constructor
+ */
 const TaskItem = ({task}: {task: ResponseTaskType}) => {
 	return (
 		<div className={'task'}>

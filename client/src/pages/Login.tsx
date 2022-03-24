@@ -8,7 +8,10 @@ import {useNavigate} from "react-router-dom";
 import SpinnerComponent from "../components/Spinner";
 
 
-
+/**
+ * @desc login page
+ * @constructor
+ */
 const LoginPage = () => {
 	const [formData, setFormData] = useState<UserType>({
 		email: '',

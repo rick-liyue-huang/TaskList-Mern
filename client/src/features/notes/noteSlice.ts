@@ -56,6 +56,9 @@ export const showNotes = createAsyncThunk(
 	}
 )
 
+/**
+ * @desc create note on specific task and user
+ */
 export const createNote = createAsyncThunk(
 	'notes/create',
 	async ({noteText, taskId}: {noteText: string, taskId: string | undefined}, thunkApi) => {

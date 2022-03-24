@@ -4,7 +4,13 @@ import {Link, useNavigate} from 'react-router-dom';
 import {useSelector, useDispatch} from "react-redux";
 import {logout, reset} from "../features/auth/authSlice";
 import {RootState} from "../app/store";
+import {FaHome} from "react-icons/fa";
 
+
+/**
+ * @desc header component
+ * @constructor
+ */
 const HeaderComponent = () => {
 
 	const {user} = useSelector((state: RootState) => state.auth)
@@ -20,7 +26,7 @@ const HeaderComponent = () => {
 	return (
 		<header className={'header'}>
 			<div className="logo">
-				<Link to={'/'} style={{fontWeight: 'bolder', fontSize: '1.6rem'}}>HOME</Link>
+				<Link to={'/'} style={{fontWeight: 'bolder', fontSize: '1.6rem'}}><FaHome /></Link>
 			</div>
 			<ul>
 				{

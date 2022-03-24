@@ -1,7 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {FaQuestionCircle, FaTicketAlt} from 'react-icons/fa'
+import {FaTasks, FaTicketAlt} from 'react-icons/fa'
 
+/**
+ * @desc dashboard page
+ * @constructor
+ */
 const HomePage = () => {
 	return (
 		<>
@@ -10,10 +14,10 @@ const HomePage = () => {
 				<p>Please choose below</p>
 			</section>
 			<Link to={'/newtask'} className={'btn btn-reverse btn-block'}>
-				<FaQuestionCircle /> <span style={{color: 'steelblue'}}>CREATE TASK</span>
+				<FaTicketAlt /> <span style={{color: 'steelblue'}}>CREATE TASK</span>
 			</Link>
 			<Link to={'/tasks'} className={'btn btn-block'}>
-				<FaTicketAlt />  SHOW TASK
+				<FaTasks />  SHOW TASK
 			</Link>
 		</>
 	);

@@ -2,7 +2,7 @@
 
 #### Introduction
 
-I create this project by MERN technology, which includes the 'express.js' on server side and 'redux-toolkit' on client side. This project is daily task management web app, through which I need to firstly sign in or register the app and then create the task, edit the task and close task.
+I create this project by MERN technology, which includes the 'express.js' on server side and 'redux-toolkit' on client side. This project is daily task management web app, through which I need to firstly sign in or register the app and then create the task, add notes on the new task and close task to done status.
 
 
 #### More details in project
@@ -13,6 +13,10 @@ I create this project by MERN technology, which includes the 'express.js' on ser
 4. Using typescript to coding client end;
 5. Using 'redux-toolkit' to simplify the redux coding, and immutably deal with the component state;
 6. Using react series frameworks, including react-icons, react-modal and react-toastify to beautify the client view.
+
+
+[app link](https://mernlistwebapp.herokuapp.com)
+
 
 
 

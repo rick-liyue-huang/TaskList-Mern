@@ -14,7 +14,7 @@ import {FaPlus} from "react-icons/fa";
 
 const customStyles: Styles = {
 	content: {
-		width: '600px',
+		width: '500px',
 		top: '50%',
 		left: '50%',
 		right: 'auto',
@@ -27,6 +27,11 @@ const customStyles: Styles = {
 }
 Modal.setAppElement('#root')
 
+
+/**
+ * @desc single task page, and show note on the task
+ * @constructor
+ */
 const TaskShowPage = () => {
 
 	const [modalOpen, setModalOpen] = useState(false);

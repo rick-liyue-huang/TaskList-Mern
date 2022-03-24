@@ -7,6 +7,11 @@ import {RootState} from "../app/store";
 import {useNavigate} from "react-router-dom";
 import SpinnerComponent from '../components/Spinner'
 
+
+/**
+ * @desc register page
+ * @constructor
+ */
 const RegisterPage = () => {
 
 	const [formData, setFormData] = useState<UserType>({

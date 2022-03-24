@@ -7,7 +7,10 @@ import SpinnerComponent from "../components/Spinner";
 import {createNewTask, reset} from "../features/tasks/taskSlice";
 import HomeButton from '../components/HomeButton';
 
-
+/**
+ * @desc create task page
+ * @constructor
+ */
 const NewTaskPage = () => {
 
 	const {user} = useSelector((state: RootState) => state.auth);

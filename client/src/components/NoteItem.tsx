@@ -4,7 +4,11 @@ import {RootState} from "../app/store";
 import {ResponseNoteType} from "../features/notes/noteSlice";
 
 
-
+/**
+ * @desc dump component
+ * @param note
+ * @constructor
+ */
 const NoteItem = ({note}: {note: ResponseNoteType}) => {
 
 	const {user} = useSelector((state: RootState) => state.auth);

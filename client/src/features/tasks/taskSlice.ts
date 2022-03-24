@@ -61,6 +61,9 @@ export const createNewTask = createAsyncThunk(
 	}
 )
 
+/**
+ * @desc get all tasks by user id
+ */
 export const showAllTasks = createAsyncThunk(
 	'tasks/getAll',
 	async (_, thunkApi) => {

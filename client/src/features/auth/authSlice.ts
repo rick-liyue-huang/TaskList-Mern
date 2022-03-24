@@ -2,7 +2,9 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import authService from './authService';
 
-
+/**
+ * @desc register or login form input type
+ */
 export interface UserType {
 	name?: string;
 	email: string;
@@ -10,6 +12,9 @@ export interface UserType {
 	cpassword?: string;
 }
 
+/**
+ * @desc match with the server response
+ */
 export interface ResponseUserType {
 	_id: string,
 	name: string,

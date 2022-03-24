@@ -15,6 +15,12 @@ const showNotes = async (id: string, token: string) => {
 	return response.data;
 }
 
+/**
+ * @desc connect with server on noteController
+ * @param text
+ * @param id
+ * @param token
+ */
 const createNote = async (text: string, id: string, token: string) => {
 	const config = {
 		headers: {

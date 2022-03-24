@@ -9,6 +9,10 @@ import TaskItem from "../components/TaskItem";
 import {toast} from "react-toastify";
 
 
+/**
+ * @desc task list page
+ * @constructor
+ */
 const TaskListPage = () => {
 
 	const {tasks, isSuccess, isLoading, message, isError} = useSelector((state: RootState) => state.task);
