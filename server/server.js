@@ -30,13 +30,14 @@ if (process.env.NODE_ENV === 'production') {
 	// set build directory as static
 	app.use(express.static(path.join(__dirname, '../client/build')));
 
-	app.get('*', (req, res) => res.sendFile(__dirname, '../', 'client', 'build', 'index.html'));
+	app.get('*', (_, res) => res.sendFile(__dirname, '../', 'client', 'build', 'index.html'));
 
 } else {
 	app.get('/', (req, res) => {
 		res.status(200).json({message: 'Set as production to deploy heroku'})
 	})
 }
+
 
 // errorHandler deal with the res.json, so put it after routes
 app.use(errorHandler);

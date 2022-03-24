@@ -25,9 +25,7 @@ const customStyles: Styles = {
 
 	},
 }
-
 Modal.setAppElement('#root')
-
 
 const TaskShowPage = () => {
 
