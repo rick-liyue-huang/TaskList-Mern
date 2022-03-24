@@ -6,6 +6,8 @@ import RegisterPage from "./pages/Register";
 import HeaderComponent from "./components/Header";
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import NewTaskPage from "./pages/NewTask";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -17,6 +19,9 @@ function App() {
            <Route path={'/'} element={<Home />} />
            <Route path={'/login'} element={<LoginPage />} />
            <Route path={'/register'} element={<RegisterPage />} />
+           <Route path={'/newtask'} element={<ProtectedRoute />}>
+             <Route path={'/newtask'} element={<NewTaskPage />} />
+           </Route>
          </Routes>
          <ToastContainer />
        </div>
