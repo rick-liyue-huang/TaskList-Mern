@@ -6,6 +6,13 @@ const {
 	getTasksController, createTaskController,
 	getTaskByIdController, updateTaskByIdController, deleteTaskByIdController
 } = require("../controllers/taskController");
+const {noteRouter} = require('./noteRoute');
+
+
+/**
+ * @desc re-route to noteRouter
+ */
+taskRouter.use('/:taskId/notes', noteRouter)
 
 taskRouter
 	.route('/')

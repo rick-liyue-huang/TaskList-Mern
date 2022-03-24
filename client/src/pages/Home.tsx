@@ -9,10 +9,10 @@ const HomePage = () => {
 				<h1>Get the task list</h1>
 				<p>Please choose below</p>
 			</section>
-			<Link to={'/new-ticket'} className={'btn btn-reverse btn-block'}>
+			<Link to={'/newtask'} className={'btn btn-reverse btn-block'}>
 				<FaQuestionCircle /> Create New Task
 			</Link>
-			<Link to={'/tickets'} className={'btn btn-block'}>
+			<Link to={'/tasks'} className={'btn btn-block'}>
 				<FaTicketAlt /> View Task List
 			</Link>
 		</>

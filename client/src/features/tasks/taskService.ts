@@ -22,8 +22,61 @@ const createNewTask = async (task: SingleTaskType, token: string) => {
 	return response.data;
 }
 
+/**
+ * @desc show all tasks by token
+ * @param token
+ */
+const showAllTasks = async (token: string) => {
+	const config = {
+		headers: {
+			Authorization: `Bearer ${token}`
+		}
+	};
+
+	const response = await axios.get(API_URI, config);
+
+	return response.data;
+};
+
+/**
+ * @desc show the single task by id and token
+ * @param id
+ * @param token
+ */
+const showSingleTask = async (id: string, token: string) => {
+	const config = {
+		headers: {
+			Authorization: `Bearer ${token}`
+		}
+	};
+
+	const response = await axios.get(API_URI + id, config);
+
+	return response.data;
+}
+
+/**
+ * @desc close task by id and token
+ * @param id
+ * @param token
+ */
+const completeSingleTask = async (id: string, token: string) => {
+	const config = {
+		headers: {
+			Authorization: `Bearer ${token}`
+		}
+	};
+
+	const response = await axios.put(API_URI + id, {status: 'completed'}, config);
+
+	return response.data;
+}
+
 const taskService = {
-	createNewTask
+	createNewTask,
+	showAllTasks,
+	showSingleTask,
+	completeSingleTask
 }
 
 
