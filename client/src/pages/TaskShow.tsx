@@ -64,7 +64,7 @@ const TaskShowPage = () => {
 	const handleComplete = () => {
 		dispatch(completeSingleTask(taskId!))
 		toast.success('Task completed');
-		navigate('/tasks')
+		navigate('/')
 	}
 
 	const handleOpenModal = () => {
