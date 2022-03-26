@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e2eb01a-6721-48ea-9601-fb74c1315548" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/bg.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mernlistwebapp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mernlistwebapp" beforeDir="false" afterPath="$PROJECT_DIR$/mernlistwebapp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mernlistwebapp/client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/mernlistwebapp/client/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,6 +89,7 @@
       <workItem from="1648103570833" duration="182000" />
       <workItem from="1648103773887" duration="13636000" />
       <workItem from="1648298371837" duration="1301000" />
+      <workItem from="1648299690942" duration="387000" />
     </task>
     <servers />
   </component>
