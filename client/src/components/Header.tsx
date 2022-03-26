@@ -32,7 +32,7 @@ const HeaderComponent = () => {
 				{
 					user ? (
 						<li>
-							<button className={'btn'} onClick={handleLogout}>
+							<button className={'btn'} onClick={handleLogout} style={{backgroundColor: 'purple'}}>
 								<FaSignOutAlt /> LOGOUT
 							</button>
 						</li>

@@ -9,11 +9,15 @@
 body {
   font-family: 'Poppins', sans-serif;
   height: 100vh;
+  background-image: url("./bg.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 a {
   text-decoration: none;
-  color: steelblue;
+  color: purple;
 }
 
 p {
@@ -41,7 +45,7 @@ h3 {
   margin: 0 auto;
   padding: 0 20px;
   text-align: center;
-  background-color: rgba(187, 246, 229, 0.8);
+  /*background-color: rgba(187, 246, 229, 0.8);*/
   padding-bottom: 10rem;
 }
 
